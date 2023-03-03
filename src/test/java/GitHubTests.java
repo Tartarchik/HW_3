@@ -13,7 +13,7 @@ public class GitHubTests {
     }
 
     @Test
-    void textTest()
+    void selenideTest()
     {
         open("https://github.com/");
 

@@ -22,7 +22,17 @@ public class GitHubTests {
         $("#wiki-tab").click();
         $("li.wiki-more-pages-link").$("[type=button]").click();
         $(byText("SoftAssertions")).click();
-        $(".markdown-body").shouldHave(text("Using JUnit5 extend test class:"));
+        $x("//pre[.//span[contains(text(), \"@ExtendWith({SoftAssertsExtension.class})\\n\" +\n" +
+                "                        \"class Tests {\\n\" +\n" +
+                "                        \"  @Test\\n\" +\n" +
+                "                        \"  void test() {\\n\" +\n" +
+                "                        \"    Configuration.assertionMode = SOFT;\\n\" +\n" +
+                "                        \"    open(\\\"page.html\\\");\\n\" +\n" +
+                "                        \"\\n\" +\n" +
+                "                        \"    $(\\\"#first\\\").should(visible).click();\\n\" +\n" +
+                "                        \"    $(\\\"#second\\\").should(visible).click();\\n\" +\n" +
+                "                        \"  }\\n\" +\n" +
+                "                        \"}\")]]");
         sleep(5000);
     }
 }

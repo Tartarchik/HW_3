@@ -22,17 +22,20 @@ public class GitHubTests {
         $("#wiki-tab").click();
         $("li.wiki-more-pages-link").$("[type=button]").click();
         $(byText("SoftAssertions")).click();
-        $x("//pre[.//span[contains(text(), \"@ExtendWith({SoftAssertsExtension.class})\\n\" +\n" +
-                "                        \"class Tests {\\n\" +\n" +
-                "                        \"  @Test\\n\" +\n" +
-                "                        \"  void test() {\\n\" +\n" +
-                "                        \"    Configuration.assertionMode = SOFT;\\n\" +\n" +
-                "                        \"    open(\\\"page.html\\\");\\n\" +\n" +
-                "                        \"\\n\" +\n" +
-                "                        \"    $(\\\"#first\\\").should(visible).click();\\n\" +\n" +
-                "                        \"    $(\\\"#second\\\").should(visible).click();\\n\" +\n" +
-                "                        \"  }\\n\" +\n" +
-                "                        \"}\")]]");
+        $("#user-content-3-using-junit5-extend-test-class")
+                .parent()
+                .sibling(0)
+                .shouldHave(text("@ExtendWith({SoftAssertsExtension.class})\n" +
+                        "class Tests {\n" +
+                        "  @Test\n" +
+                        "  void test() {\n" +
+                        "    Configuration.assertionMode = SOFT;\n" +
+                        "    open(\"page.html\");\n" +
+                        "\n" +
+                        "    $(\"#first\").should(visible).click();\n" +
+                        "    $(\"#second\").should(visible).click();\n" +
+                        "  }\n" +
+                        "}"));
         sleep(5000);
     }
 }
